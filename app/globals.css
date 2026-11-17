@@ -1,0 +1,192 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #060608;
+  --foreground: #f3f4f6;
+  --navy: #0B1020;
+  --blue: #3B82F6;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #060608;
+  color: #f3f4f6;
+}
+
+body {
+  background-color: #060608;
+  color: #f3f4f6;
+  overflow-x: hidden;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+/* Custom scrollbar styled with Electric Blue & Midnight Navy */
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0B1020;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 5px;
+  border: 2px solid #0B1020;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3B82F6;
+}
+
+/* Vibrant selection */
+::selection {
+  background-color: #3B82F6;
+  color: #ffffff;
+}
+
+/* Gradient text helpers */
+.text-gradient-primary {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400;
+}
+
+.text-gradient-doraemon {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-cyan-300 to-emerald-400;
+}
+
+.text-gradient-warm {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-amber-400 via-orange-400 to-pink-500;
+}
+
+/* Glassmorphism cards */
+.glass-card {
+  background: rgba(11, 16, 32, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(59, 130, 246, 0.15);
+}
+
+.glass-card-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card-hover:hover {
+  transform: translateY(-5px);
+  border-color: rgba(59, 130, 246, 0.5);
+  box-shadow: 0 16px 35px -10px rgba(59, 130, 246, 0.25);
+}
+
+/* Doraemon continuous gentle floating animation */
+@keyframes doraemonFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-6px) rotate(2deg);
+  }
+  50% {
+    transform: translateY(-11px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-5px) rotate(-2deg);
+  }
+}
+
+.animate-doraemon-float {
+  animation: doraemonFloat 3.8s ease-in-out infinite;
+}
+
+/* Doraemon Flying / Guiding mode animation */
+@keyframes doraemonGuideFly {
+  0% {
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+  20% {
+    transform: translateY(-18px) scale(1.08) rotate(6deg);
+  }
+  50% {
+    transform: translateY(-24px) scale(1.1) rotate(-4deg);
+  }
+  80% {
+    transform: translateY(-10px) scale(1.05) rotate(3deg);
+  }
+  100% {
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+}
+
+.animate-doraemon-guide {
+  animation: doraemonGuideFly 1.8s ease-in-out infinite;
+}
+
+/* Doraemon playful click wiggle */
+@keyframes doraemonWiggle {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  20% { transform: scale(1.15) rotate(-10deg); }
+  40% { transform: scale(1.18) rotate(10deg); }
+  60% { transform: scale(1.12) rotate(-6deg); }
+  80% { transform: scale(1.05) rotate(4deg); }
+}
+
+.animate-doraemon-wiggle {
+  animation: doraemonWiggle 0.6s ease-in-out;
+}
+
+/* Bamboo copter propeller spin */
+@keyframes propellerSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-propeller {
+  animation: propellerSpin 0.3s linear infinite;
+  transform-origin: center center;
+}
+
+/* Floating sparkles / stars */
+@keyframes sparkleTwinkle {
+  0%, 100% { opacity: 0.25; transform: scale(0.85) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1.2) rotate(15deg); }
+}
+
+.animate-sparkle-1 {
+  animation: sparkleTwinkle 3s ease-in-out infinite;
+}
+.animate-sparkle-2 {
+  animation: sparkleTwinkle 4s ease-in-out infinite 1.5s;
+}
+.animate-sparkle-3 {
+  animation: sparkleTwinkle 3.5s ease-in-out infinite 0.7s;
+}
+
+/* Hide scrollbar for suggestion pill carousels */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .animate-doraemon-float,
+  .animate-doraemon-guide,
+  .animate-doraemon-wiggle,
+  .animate-propeller,
+  .animate-sparkle-1,
+  .animate-sparkle-2,
+  .animate-sparkle-3,
+  .animate-bounce,
+  .animate-pulse,
+  .animate-ping {
+    animation: none !important;
+    transition: none !important;
+  }
+  html {
+    scroll-behavior: auto !important;
+  }
+}
